@@ -15,10 +15,10 @@ with open("input.txt", "r") as f:
         past_number = current_number
         current_number = (current_number + turns) % 100 
 
-        # Went by zero at least once
-        if past_number != 0 and (direction == "L" and (past_number < current_number or current_number == 0) or direction == "R" and past_number > current_number):
-            print(f"Triggered on {line.strip()}")
-            print(past_number, current_number)
+        # Went by zero in the rotation, or stopped on zero
+        if past_number != 0 and (
+            direction == "L" and (current_number > past_number or current_number == 0) or
+            direction == "R" and current_number < past_number):
             zero_count += 1
 
 print(zero_count)
