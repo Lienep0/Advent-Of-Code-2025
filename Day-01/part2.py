@@ -1,3 +1,6 @@
+import time
+
+start = time.time()
 current_number = 50
 zero_count = 0
 with open("input.txt", "r") as f:
@@ -20,5 +23,7 @@ with open("input.txt", "r") as f:
             direction == "L" and (current_number > past_number or current_number == 0) or
             direction == "R" and current_number < past_number):
             zero_count += 1
+end = time.time()
 
-print(zero_count)
+print(f"Time taken : {end - start} s")
+print(f"Answer : {zero_count}")
